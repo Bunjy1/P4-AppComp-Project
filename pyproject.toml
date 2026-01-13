@@ -1,10 +1,10 @@
 [project]
-name = "example_package_Bunjy1"
+name = "ACPP_Bunjy"
 version = "0.0.1"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Ben Hansen", email="2758304h@student.gla.ac.uk" },
 ]
-description = "A small example package"
+description = "P4 Applied Computing functions package"
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
