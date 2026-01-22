@@ -27,7 +27,7 @@ def periodic_fitter(inp_array, params_guess):
 
             residuals = fitted_curve-current_data
             ss_res = sum(residuals**2)
-            ss_tot = sum((testset1-np.mean(testset1))**2)
+            ss_tot = sum((current_data-np.mean(current_data))**2)
             r_squared = 1 - ss_res/ss_tot
 
             params_array.append(params)
