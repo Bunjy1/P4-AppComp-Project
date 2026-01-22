@@ -1,4 +1,7 @@
-# Creating a periodic fitter function
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import optimize
+
 def periodic_fitter(inp_array, params_guess):
 
     # This function takes an input 3D data array and iterates over it to generate fitted periodic functions to the intensity pattern, it also takes an array of input
