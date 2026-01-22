@@ -1,4 +1,6 @@
-# Defining function for above process
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy import optimize
 
 def polynomial_fitter(x_data, y_data, order, params_guess):
 
