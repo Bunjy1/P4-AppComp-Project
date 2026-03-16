@@ -1,8 +1,8 @@
-from .double_number import double
-from .straight_line import straightline_fitter
-from .polynomial import polynomial_fitter
-from .periodic import periodic_fitter
-from .week3functions import (
+from .weeks123_functions import (
+    double,
+    straightline_fitter,
+    polynomial_fitter,
+    periodic_fitter,
     f1,
     f2,
     f3,
