@@ -16,6 +16,14 @@ def periodic(x, a, c, d, f, g):
         sin(x) + sin(2x), with paramaters that can be manually toggled
         or curve-fitted.
 
+    Parameters
+    ----------
+    x: array-like
+        Input values of x to the function.
+    a,b,c,d,e: int or float
+        Parameters representing amplitude, phase and offset of the function.
+
+    
         """
     return(a*np.sin(np.deg2rad(x+c))+d*np.sin(np.deg2rad(2*(x+f)))+g)
 
