@@ -13,22 +13,30 @@ from scipy import optimize
 def periodic(x, a, c, d, f, g):
     """ Defining the TFP for fitting to the electron lattice data.
         The equation used is a generic periodic term of the form 
-        sin(x) + sin(2x), with paramaters that can be manually toggled
-        or curve-fitted.
+        sin(x) + sin(2x), with parameters that can be manually adjusted
+        or determined through curve fitting.
 
     Parameters
     ----------
-    x: array-like
-        Input values of x to the function.
-    a,b,c,d,e: int or float
-        Parameters representing amplitude, phase and offset of the function.
+    x : array-like
+        Input values of x to the function (in degrees).
+    a : float
+        Amplitude of the first sinusoidal term.
+    b : float
+        Phase shift applied to the first sinusoidal term.
+    c : float
+        Amplitude of the second sinusoidal term.
+    d : float
+        Phase shift applied to the second sinusoidal term.
+    e : float
+        Constant offset applied to the function.
 
     Returns
     -------
-    y : array-like
+    y : numpy array
         The calculated y values of the periodic function corresponding to x.
     """
-    return(a*np.sin(np.deg2rad(x+c))+d*np.sin(np.deg2rad(2*(x+f)))+g)
+    return(a*np.sin(np.deg2rad(x+b)) + c*np.sin(np.deg2rad(2*(x+d))) + e)
 
 def periodic_fitter(current_data, params_guess, bounds):
     """ Application of scipy's optimise curve-fit to the TFP in a
@@ -41,13 +49,13 @@ def periodic_fitter(current_data, params_guess, bounds):
     params_guess: list or array
         Array of initial estimate parameters for function values a-e.
     bounds: list or array
-        Paired arrays defining the upper and lower bounds of possible parameters.
+        Paired arrays defining the lower and upper bounds of possible parameters respectively.
 
     Returns
     -------
-    params: array
+    params: numpy array
         Found parameters from curve fitting.
-    errors: array
+    errors: numpy array
         Associated parameters on each parameter.
     r_squared: float
         R² value associated with the fitted curve.
