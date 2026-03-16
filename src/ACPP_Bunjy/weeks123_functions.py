@@ -8,7 +8,6 @@ Examples of usage can be found in the related example notebook.
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
-from scipy.optimize import minimize
 from sklearn import cluster
 from sklearn.cluster import KMeans
 
@@ -354,7 +353,7 @@ def signal_minimise(tau_vals, linear_vals, t_final, x0_vals, plot=False):
     args_vals = np.stack([fsum_vals, f1_vals, f2_vals, f3_vals, f4_vals])
 
     # Running minimise function
-    min_vals = minimize(func, x0_vals, args=(args_vals,))['x']
+    min_vals = optimize.minimize(func, x0_vals, args=(args_vals,))['x']
     fmin_vals = f_sum(time, *tau_vals, *min_vals)
 
     if plot == True:
