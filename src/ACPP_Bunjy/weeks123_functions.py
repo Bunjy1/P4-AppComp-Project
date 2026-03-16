@@ -148,7 +148,8 @@ def order5(x, a, b, c, d, e, f):
 def order6(x, a, b, c, d, e, f, g):
     """ Sixth order polynomial. """
     return(a + b*x + c*x**2 + d*x**3 + e*x**4 + f*x**5 + g*x**6)
-    def polynomial_fitter(x_data, y_data, order, params_guess, plotting=False):
+    
+def polynomial_fitter(x_data, y_data, order, params_guess, plotting=False):
     """Fit a polynomial curve of chosen order between 1 and 6 to a 2D dataset and optionally plot the results.
 
     This function fits a polynomial to the supplied x and y data using
