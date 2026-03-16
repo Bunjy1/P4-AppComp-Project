@@ -2,7 +2,6 @@ from .weeks123_functions import (
     double,
     straightline_fitter,
     polynomial_fitter,
-    periodic_fitter,
     f1,
     f2,
     f3,
