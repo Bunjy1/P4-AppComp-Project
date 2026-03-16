@@ -8,6 +8,9 @@ Examples of usage can be found in the related example notebook.
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
+from scipy.optimize import minimize
+from sklearn import cluster
+from sklearn.cluster import KMeans
 
 """ Week 1 Functions """
 def double(x):
