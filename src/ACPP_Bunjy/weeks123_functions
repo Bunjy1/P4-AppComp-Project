@@ -1,19 +1,30 @@
-""This is a compiled set of the functions developed in the first three weeks of individual lab sessions.
-  Each function has been annotated with a description and the required inputs and outputs.
-  Examples of use can be found in the related example notebook.""
-
-""Importing Dependencies for the functions.""
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
 
-"" Week 1 Functions ""
+
+"""Compiled set of functions developed during the first three weeks of lab sessions.
+
+Each function includes a description along with required inputs and outputs.
+Examples of usage can be found in the related example notebook.
+"""
+
 
 def double(input):
-  ## Takes an input number and returns it times two.
-  output = 2*input
-  return(output)
+    """Return the input value multiplied by two.
+
+    Parameters
+    ----------
+    input : float or int
+        The number to be doubled.
+
+    Returns
+    -------
+    float or int
+        The input value multiplied by 2.
+    """
+    output = 2 * input
+    return output
 
 "" Week 2 Functions ""
 
