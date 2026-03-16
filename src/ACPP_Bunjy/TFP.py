@@ -1,11 +1,23 @@
 """ Functions associated with plotting the two-fold periodic (TFP) function
-used in the main project section.
+    used in the main project section.
+    
+    Each function includes a description along with required inputs and outputs.
+    Examples of usage can be found in the related example notebook.
 """
 
-""" Importing relevant packages """
+""" Importing Required Dependencies."""
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
+
+def periodic(x, a, c, d, f, g):
+    """ Defining the TFP for fitting to the electron lattice data.
+        The equation used is a generic periodic term of the form 
+        sin(x) + sin(2x), with paramaters that can be manually toggled
+        or curve-fitted.
+
+        """
+    return(a*np.sin(np.deg2rad(x+c))+d*np.sin(np.deg2rad(2*(x+f)))+g)
 
 def periodic_fitter(inp_array, params_guess):
 
