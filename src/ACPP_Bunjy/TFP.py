@@ -1,3 +1,8 @@
+""" Functions associated with plotting the two-fold periodic (TFP) function
+used in the main project section.
+"""
+
+""" Importing relevant packages """
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
