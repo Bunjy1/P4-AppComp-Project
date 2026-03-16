@@ -2,7 +2,7 @@
   Each function has been annotated with a description and the required inputs and outputs.
   Examples of use can be found in the related example notebook.""
 
-"Importing Dependencies for the functions."
+""Importing Dependencies for the functions.""
 
 import numpy as np
 import matplotlib.pyplot as plt
