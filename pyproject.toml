@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ACPP_Bunjy"
-version = "0.1.4"
+version = "0.2.0"
 authors = [
   { name="Ben Hansen", email="2758304h@student.gla.ac.uk" },
 ]
@@ -16,7 +16,7 @@ classifiers = [
     "Operating System :: OS Independent",
 ]
 license = "MIT"
-license-files = ["LICEN[CS]E*"]
+license-files = ["LICENCSE"]
 
 dependencies = [
   "numpy>=1.24",
