@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 from scipy import optimize
 from tqdm import tqdm
 
-def periodic(x, a, c, d, f, g):
+def periodic(x, a, b, c, d, e):
     """ Defining the TFP for fitting to the electron lattice data.
         The equation used is a generic periodic term of the form 
         sin(x) + sin(2x), with parameters that can be manually adjusted
@@ -240,18 +240,57 @@ def perfit_iterate(inp_array, params_guess, bounds, iterative_fitting=True):
 
     return params_array, errors_array, r2_array
 
-def param_plotting(dataset, raw_pdata, clean_pdata, index, name):
-    plt.figure(figsize=(10,4))
-    plt.suptitle(name+' Set {} Colourmap'.format(index+1))
-            
-    plt.subplot(1,2,1)
-    plt.title('Raw Values')
-    raw_pshape = raw_pdata[:,index].reshape(dataset.shape[0],dataset.shape[1])
-    plt.imshow(raw_pshape)
-    plt.colorbar()
+def param_plotting(raw_pdata, clean_pdata, name, residuals=False):
+    """ Function for plotting the results of the perfit_iterate function,
+        showing the compared raw and clean parameter plots of each output
+        parameter. Function is designed to operate on two runs of perfit, 
+        one raw data fit and one clean fit. Can also be applied to plot the 
+        error values.
 
-    plt.subplot(1,2,2)
-    plt.title('Clean Values')
-    clean_pshape = clean_pdata[:,index].reshape(dataset.shape[0],dataset.shape[1])
-    plt.imshow(clean_pshape)
-    plt.colorbar()
+        Parameters
+        ----------
+        raw_pdata: numpy.nparray
+            Raw data output array from the perfit function, either params_array or errors_array.
+        clean_pdata: numpy.nparray
+            Clean data output array from the perfit function, either params_array or errors_array.
+        name: str
+            Name of the value being plotted, typically 'Parameter' or 'Error'.
+        residuals: bool, optional
+            Optional toggle to plot the residual difference of each plot pair in the subplot.
+    """
+    # Checking formatting of inputs to return errors if incorrect
+    if raw_pdata.shape != claen_pdata.shape
+    # Defining the number of subplots from the residual toggle
+    if residuals:
+        plot_no = 3
+    else:
+        plot_no = 2
+
+    # Iterating the plots over the number of parameters in the array.
+    for index in range(raw_pdata.shape[2]):
+
+        # Formatting plot
+        plt.figure(figsize=(12,4))
+        plt.suptitle(name+' Set {} Colourmap'.format(index+1))
+
+        # Raw value plot
+        plt.subplot(1,plot_no,1)
+        plt.title('Raw Values')
+        raw_pshape = raw_pdata[:,:,index]
+        plt.imshow(raw_pshape)
+        plt.colorbar()
+
+        # Clean value plot
+        plt.subplot(1,plot_no,2)
+        plt.title('Clean Values')
+        clean_pshape = clean_pdata[:,:,index]
+        plt.imshow(clean_pshape)
+        plt.colorbar()
+
+        # Residuals plot (if needed)
+        if residuals:
+            plt.subplot(1,plot_no,3)
+            plt.title('Residuals')
+            residuals_shape = clean_pshape - raw_pshape
+            plt.imshow(residuals_shape)
+            plt.colorbar()
