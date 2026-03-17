@@ -19,12 +19,12 @@ license = "MIT"
 license-files = ["LICENCSE"]
 
 dependencies = [
-  "numpy>=1.24",
-  "matplotlib>=3.7",
-  "scipy>=1.10",
-  "scikit-learn>=1.3"
+  "numpy>=2.0.2",
+  "matplotlib>=3.9.2",
+  "scipy>=1.13.1",
+  "scikit-learn>=1.6.1"
   "tqdm>=4.67.2"
-  "hyperspy>=1.7"
+  "hyperspy>=2.3.0"
 ]
 
 [tool.setuptools]
