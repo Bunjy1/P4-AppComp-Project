@@ -13,7 +13,21 @@ import hyperspy.api as hs
 
 """ Function """
 def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics=False, component_plots=False, param_plots=False, residuals=False, iterative_fitting=True, clean_outliers=False, save_data=False, filename='placeholder_name'):
+    """ Cumulative function to apply both the primary decomposition and TFP processes
+        in a single action, with various toggle to control aspects of the process.
+        With a correctly processed dataset using the auto_import function in decomp.py,
+        this function should be able to achieve the majority of the project's objectives
+        in a single run.
 
+        Parameters
+        ----------
+        dataset: hs.signals.Signal1D
+            Imported and processed dataset, optimally the output of decomp.auto_import.
+        vectors: int
+            The number of desried vector components for reconstruction after the decomposition.
+        params_guess: list
+            Initial guess values for the TFP fitted parameters.
+        bo
     # Finding vector decomps
     raw_data = dataset.data
     clean_hsdata = auto_decomp(dataset, vectors, algorithm=algorithm, metrics=metrics)
