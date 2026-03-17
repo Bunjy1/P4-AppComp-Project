@@ -55,10 +55,15 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
 
         Returns
         -------
-        full_data: numpy.nparray
+        full_data: dict
             Compiled results of all sub-functions, containing data, parameters, parameter errors, and R^2 array,
-            for both raw and clean data, contained within a single stacked numpy array.
+            for both raw and clean data, into a dict object with corresponding tage for each, 
+            e.g. full_data["Raw"]["R2"] would return the raw R2 array. This is compatible with np.save providing 
+            that the data is loaded with allow_pickle=True in np.load, and as data.item().get("Raw","R2").
         """
+    # Input error checks
+    
+    
     # Finding vector decomps
     raw_data = dataset.data
     clean_hsdata = decomp.auto_decomp(dataset, vectors, algorithm=algorithm, metrics=metrics)
@@ -115,11 +120,11 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
         tfp.param_plotting(raw_errors, clean_errors, 'Error', residuals=residuals)
 
     # Compiling all results into a singular array
-    full_data = np.array([[raw_data, *raw_fit],[clean_data, *clean_fit]])
-    full_data = np.stack(full_data)
+    full_data = {"Raw":{"Data":raw_data, "Params":raw_params, "Errors":raw_errors, "R2":raw_r2},
+                 "Clean":{"Data":clean_data, "Params":clean_params, "Errors":clean_errors, "R2":clean_r2}} 
     
     # Saving data into a .npy file
     if save_data == True:
-        np.save(filename, full_data)
+        np.save(filename+'.npy', full_data)
 
     return(full_data)
