@@ -11,6 +11,8 @@ import matplotlib.pyplot as plt
 from scipy import optimize
 from tqdm import tqdm
 
+""" Functions """
+
 def periodic(x, a, b, c, d, e):
     """ Defining the TFP for fitting to the electron lattice data.
         The equation used is a generic periodic term of the form 
