@@ -259,7 +259,15 @@ def param_plotting(raw_pdata, clean_pdata, name, residuals=False):
             Optional toggle to plot the residual difference of each plot pair in the subplot.
     """
     # Checking formatting of inputs to return errors if incorrect
-    if raw_pdata.shape != claen_pdata.shape
+    if not all(isinstance(v, np.ndarray) for v in (raw_pdata,clean_pdata)):
+        raise ValueError("Raw and clean data arrays must by of type numpy.ndarray.")
+        
+    if raw_pdata.shape != clean_pdata.shape:
+        raise ValueError("Raw and clean data arrays must be the same size.")
+
+    if not isinstance(name, str):
+        raise ValueError("Name must be a string.")
+        
     # Defining the number of subplots from the residual toggle
     if residuals:
         plot_no = 3
