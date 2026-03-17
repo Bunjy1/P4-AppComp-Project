@@ -62,7 +62,9 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
             that the data is loaded with allow_pickle=True in np.load, and as data.item().get("Raw","R2").
         """
     # Input error checks
-    
+    if not isinstance(dataset, hs.signals.Signal1D):
+        raise ValueError("Input data must by of type hs.signals.Signal1D.")
+    # All other input types will be flagged by respective function errors.
     
     # Finding vector decomps
     raw_data = dataset.data
