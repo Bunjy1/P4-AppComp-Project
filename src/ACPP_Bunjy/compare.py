@@ -1,3 +1,17 @@
+""" Complete function to apply processes designed in tfp and decomp files.
+    Represents summative work of the project.
+    
+    Each function includes a description along with required inputs and outputs.
+    Examples of usage can be found in the related example notebook.
+"""
+
+""" Importing Required Dependencies."""
+import os
+import numpy as np
+import matplotlib.pyplot as plt
+import hyperspy.api as hs
+
+""" Function """
 def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics=False, component_plots=False, param_plots=False, residuals=False, iterative_fitting=True, clean_outliers=False, save_data=False, filename='placeholder_name'):
 
     # Finding vector decomps
