@@ -73,7 +73,8 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
     # Finding vector decomps
     raw_data = dataset.data
     clean_hsdata = decomp.auto_decomp(dataset, vectors, algorithm=algorithm, metrics=metrics)
-    clean_data = clean_hsdata.data
+    clean_data = clean_hsdata[0].data
+    metrics = clean_hsdata[1]
 
     # Plotting components
     if component_plots:
@@ -127,7 +128,8 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
 
     # Compiling all results into a singular array
     full_data = {"Raw":{"Data":raw_data, "Params":raw_params, "Errors":raw_errors, "R2":raw_r2},
-                 "Clean":{"Data":clean_data, "Params":clean_params, "Errors":clean_errors, "R2":clean_r2}} 
+                 "Clean":{"Data":clean_data, "Params":clean_params, "Errors":clean_errors, "R2":clean_r2},
+                "Metrics":metrics} 
     
     # Saving data into a .npy file
     if save_data == True:
