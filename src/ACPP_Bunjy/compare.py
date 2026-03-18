@@ -10,6 +10,10 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 import hyperspy.api as hs
+from scipy import optimize
+from tqdm import tqdm
+
+""" Extracting Required functions from other .py files. """
 import ACPP_Bunjy.tfp as tfp
 import ACPP_Bunjy.decomp as decomp
 
