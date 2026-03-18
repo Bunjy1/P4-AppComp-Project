@@ -180,6 +180,17 @@ def auto_decomp(input_data, vectors, algorithm="SVD", metrics=False, plots=False
             List of the three calculated goodness metrics.
         """
 
+    # Checking formatting of inputs to return an error if incorrect
+    if not isinstance(input_data, hs.signals.Signal1D):
+        raise ValueError("Input data must by of type hs.signals.Signal1D.")
+        
+    if not isinstance(vectors, int):
+        raise ValueError("Number of reconstruction vectors must be an integer value.")
+
+    # Hyperspy algorithm will return separate error if an incorrect algorithm name is used so unneeded here.
+    if not isinstance(algorithm, str):
+        raise ValueError("Algorithm must be a str. See Hyperspy documentation for list of options.")
+
     # Decomposition
     input_data.decomposition(algorithm=algorithm) # some algorithms need output_dimension specified?
     cleaned_data = input_data.get_decomposition_model(vectors)
