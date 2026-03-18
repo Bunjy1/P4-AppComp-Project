@@ -61,7 +61,7 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
         -------
         full_data: dict
             Compiled results of all sub-functions, containing data, parameters, parameter errors, and R^2 array,
-            for both raw and clean data, into a dict object with corresponding tage for each, 
+            for both raw and clean data, and goodness metrics into a dict object with corresponding tags for each, 
             e.g. full_data["Raw"]["R2"] would return the raw R2 array. This is compatible with np.save providing 
             that the data is loaded with allow_pickle=True in np.load, and as data.item().get("Raw","R2").
         """
