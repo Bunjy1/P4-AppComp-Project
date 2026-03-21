@@ -10,7 +10,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
 from tqdm import tqdm
-import time
 
 """ Functions """
 
