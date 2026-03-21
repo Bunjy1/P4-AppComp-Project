@@ -12,6 +12,7 @@ import matplotlib.pyplot as plt
 import hyperspy.api as hs
 from scipy import optimize
 from tqdm import tqdm
+import time
 
 """ Extracting Required functions from other .py files. """
 import ACPP_Bunjy.tfp as tfp
@@ -61,14 +62,17 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
         -------
         full_data: dict
             Compiled results of all sub-functions, containing data, parameters, parameter errors, and R^2 array,
-            for both raw and clean data, and goodness metrics into a dict object with corresponding tags for each, 
-            e.g. full_data["Raw"]["R2"] would return the raw R2 array. This is compatible with np.save providing 
-            that the data is loaded with allow_pickle=True in np.load, and as data.item().get("Raw","R2").
+            for both raw and clean data, runtime, and goodness metrics into a dict object with corresponding tags
+            for each, e.g. full_data["Raw"]["R2"] would return the raw R2 array. This is compatible with np.save 
+            providing that the data is loaded with allow_pickle=True in np.load, and as data.item().get("Raw","R2").
         """
     # Input error checks
     if not isinstance(dataset, hs.signals.Signal1D):
         raise ValueError("Input data must by of type hs.signals.Signal1D.")
     # All other input types will be flagged by respective function errors.
+
+    # Tracking function runtime for comparison
+    t_start = time.time()
     
     # Finding vector decomps
     raw_data = dataset.data
@@ -126,10 +130,14 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
         tfp.param_plotting(raw_params, clean_params, 'Parameter', residuals=residuals)
         tfp.param_plotting(raw_errors, clean_errors, 'Error', residuals=residuals)
 
+    # Ending time and returning runtime
+    t_end = time.time()
+    runtime = t_end - t_start
+
     # Compiling all results into a singular array
     full_data = {"Raw":{"Data":raw_data, "Params":raw_params, "Errors":raw_errors, "R2":raw_r2},
                  "Clean":{"Data":clean_data, "Params":clean_params, "Errors":clean_errors, "R2":clean_r2},
-                "Metrics":metrics} 
+                "Metrics":metrics, "Runtime":runtime} 
     
     # Saving data into a .npy file
     if save_data == True:
