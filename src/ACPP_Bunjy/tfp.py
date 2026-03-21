@@ -10,6 +10,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
 from tqdm import tqdm
+import time
 
 """ Functions """
 
@@ -21,17 +22,17 @@ def periodic(x, a, b, c, d, e):
 
     Parameters
     ----------
-    x : array-like
+    x: array-like
         Input values of x to the function (in degrees).
-    a : float
+    a: float
         Amplitude of the first sinusoidal term.
-    b : float
+    b: float
         Phase shift applied to the first sinusoidal term.
-    c : float
+    c: float
         Amplitude of the second sinusoidal term.
-    d : float
+    d: float
         Phase shift applied to the second sinusoidal term.
-    e : float
+    e: float
         Constant offset applied to the function.
 
     Returns
@@ -108,91 +109,27 @@ def periodic_fitter(current_data, params_guess, bounds):
 
 def perfit_iterate(inp_array, params_guess, bounds, iterative_fitting=True):
     """ Applies the periodic_fitter function iteratively to a 3D data array.
-        Optionally, iterative parameter guessing can be implemented to improve
-        function efficiency.
-
-    Parameters
-    ----------
-    inp_array: array-like
-        3D data array for curve fitting to the third array dimension.
-    params_guess: list or array
-        Array of initial estimate parameters for function values a-e.
-    bounds: list or array
-        Paired arrays defining the upper and lower bounds of possible parameters.
-    iterative_fitting: bool, optional
-        Argument toggle for implementing the iterative parameter guessing
-        by using the parameter set found for the previous point in the iteration.
-        
-    Returns
-    -------
-    params_array: array
-        Stacked array of fitted parameters 
-    errors_array: array
-        Stacked array of errors associated to found parameters.
-    r2_array: array
-        List of R² values.
-    """
-    
-    params_array = []
-    errors_array = []
-    r2_array = []
-    
-    total_iters = inp_array.shape[0] * inp_array.shape[1]
-    
-    with tqdm(total=total_iters, desc="Fitting periodic functions") as pbar:
-        for n in range(inp_array.shape[0]):
-            for i in range(inp_array.shape[1]):
-                
-                current_data = inp_array[n, i, :]
-                if iterative_fitting == True:
-                    if n == 0 and i == 0:
-                        fit = periodic_fitter(current_data, params_guess, bounds)
-                    else:
-                        fit = periodic_fitter(current_data, current_params, bounds)
-                else:
-                    fit = periodic_fitter(current_data, params_guess, bounds)
-                    
-                
-                params = fit[0]
-                errors = fit[1]
-                r_squared = fit[2]
-                current_params = params
-                
-                params_array.append(params)
-                errors_array.append(errors)
-                r2_array.append(r_squared)
-                
-                pbar.update(1)
-
-    params_array = np.stack(params_array)
-    errors_array = np.stack(errors_array)
-    r2_array = np.stack(r2_array)
-    
-    return params_array, errors_array, r2_array
-
-def perfit_iterate(inp_array, params_guess, bounds, iterative_fitting=True):
-    """ Applies the periodic_fitter function iteratively to a 3D data array.
         Optionally, iterative parameter guessing can be implemented to 
         improve function efficiency.
 
     Parameters
     ----------
-    inp_array : array-like
+    inp_array: array-like
         3D data array for curve fitting along the third array dimension.
-    params_guess : list or array-like
+    params_guess: list or array-like
         Initial parameter guesses for the periodic function [a, b, c, d, e].
-    bounds : tuple of array-like
+    bounds: tuple of array-like
         Paired arrays defining the lower and upper bounds of possible parameters.
-    iterative_fitting : bool, optional
+    iterative_fitting: bool, optional
         Toggle for iterative parameter guessing using the previous fit parameters.
 
     Returns
     -------
-    params_array : numpy.ndarray
+    params_array: numpy.ndarray
         Array of fitted parameters with shape (nx, ny, 5).
-    errors_array : numpy.ndarray
+    errors_array: numpy.ndarray
         Array of parameter uncertainties with shape (nx, ny, 5).
-    r2_array : numpy.ndarray
+    r2_array: numpy.ndarray
         Array of R² values with shape (nx, ny).
     """
 
