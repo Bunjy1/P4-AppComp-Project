@@ -231,7 +231,7 @@ def auto_decomp(input_data, vectors, algorithm="SVD", output_dimension=None, met
 
         # Scree plot
         # Checking a scree plot compatible algorithm is being used
-        if algorithm not in ["SVD","PCA"]
+        if algorithm not in ["SVD","PCA"]:
             print("Scree Plot is unavailable for", algorithm)
         else:
             cleaned_data.plot_explained_variance_ratio()
