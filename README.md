@@ -31,7 +31,7 @@ For installation on the university Jupyterhub, the following line in a terminal 
 
 ## Installation (Conda)
 
-This project is designed to be installed into a conda environment using pip.
+As the project was desgined for use in the UofG Jupyter, success is not guaranteed with this method. However, this installation should perform as expected.
 
 Prerequisites:
 - Conda (Anaconda or Miniconda)
