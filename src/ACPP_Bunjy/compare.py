@@ -50,6 +50,9 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', output_
             Toggle to plot an example set of averaged vector components for visualisation.
         param_plots: bool, optional
             Toggle to plot heatmaps of each found fitted parameter
+        map: str, optional
+            Colourmap to use for imshow function, viridis as default.
+            Options for colours: https://matplotlib.org/stable/gallery/color/colormap_reference.html
         residuals: bool, optional
             Toggle to plot residual plots of the parameter heatmaps.
         iterative_fitting: bool, optional
