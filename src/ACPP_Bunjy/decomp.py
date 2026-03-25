@@ -98,6 +98,9 @@ def find_evr(cleaned_data, vectors):
     """ Function to find the explained variance ratio of a
         decomposition algorithm. Typically used within the later
         auto_decomp function, but can be applied manually.
+        
+        Note: EVR calculation is only available for SVD and PCA
+        decompositions.
 
         Parameters
         ----------
@@ -115,6 +118,11 @@ def find_evr(cleaned_data, vectors):
     # Checking formatting of inputs to return errors if incorrect
     if not isinstance(cleaned_data, hs.signals.Signal1D):
         raise ValueError("Raw and clean data arrays must by of type hs.signals.Signal1D.")
+
+    # Checking correct algorithm for calculation
+    if algorithm not in ["SVD","PCA"]:
+        print("EVR Metric is unavailable for", algorithm)
+        return None
 
     # Calculating EVR
     evr_raw = cleaned_data.get_explained_variance_ratio().data
@@ -158,6 +166,9 @@ def auto_decomp(input_data, vectors, algorithm="SVD", output_dimension=None, met
         of vectors, different UML algorithms, and otional returns of
         the decomposition function plots and metrics relating to
         goodness of fit.
+
+        Note: Scree plots are only available for SVD and PCA
+        decompositions.
 
         Parameters
         ----------
@@ -217,8 +228,13 @@ def auto_decomp(input_data, vectors, algorithm="SVD", output_dimension=None, met
     if plots:
         # Decomp plot
         cleaned_data.plot()
+
         # Scree plot
-        cleaned_data.plot_explained_variance_ratio()
+        # Checking a scree plot compatible algorithm is being used
+        if algorithm not in ["SVD","PCA"]
+            print("Scree Plot is unavailable for", algorithm)
+        else:
+            cleaned_data.plot_explained_variance_ratio()
 
     return(cleaned_data, metrics_list)
 
