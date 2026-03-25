@@ -19,7 +19,7 @@ import ACPP_Bunjy.tfp as tfp
 import ACPP_Bunjy.decomp as decomp
 
 """ Function """
-def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', output_dimension=None, metrics=False, component_plots=False, param_plots=False, residuals=False, iterative_fitting=True, clean_outliers=False, save_data=False, filename='placeholder_name'):
+def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', output_dimension=None, metrics=False, component_plots=False, param_plots=False, cmap="viridis", residuals=False, iterative_fitting=True, clean_outliers=False, save_data=False, filename='placeholder_name'):
     """ Cumulative function to apply both the primary decomposition and TFP processes
         in a single action, with various toggle to control aspects of the process.
         With a correctly processed dataset using the auto_import function in decomp.py,
@@ -130,8 +130,8 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', output_
 
     # Params plots
     if param_plots == True:
-        tfp.param_plotting(raw_params, clean_params, 'Parameter', residuals=residuals)
-        tfp.param_plotting(raw_errors, clean_errors, 'Error', residuals=residuals)
+        tfp.param_plotting(raw_params, clean_params, 'Parameter', residuals=residuals, cmap=cmap)
+        tfp.param_plotting(raw_errors, clean_errors, 'Error', residuals=residuals, cmap=cmap)
 
     # Ending time and returning runtime
     t_end = time.time()
