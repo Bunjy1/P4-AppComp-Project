@@ -178,7 +178,7 @@ def perfit_iterate(inp_array, params_guess, bounds, iterative_fitting=True):
 
     return params_array, errors_array, r2_array
 
-def param_plotting(raw_pdata, clean_pdata, name, residuals=False):
+def param_plotting(raw_pdata, clean_pdata, name, residuals=False, cmap="viridis"):
     """ Function for plotting the results of the perfit_iterate function,
         showing the compared raw and clean parameter plots of each output
         parameter. Function is designed to operate on two runs of perfit, 
@@ -195,6 +195,9 @@ def param_plotting(raw_pdata, clean_pdata, name, residuals=False):
             Name of the value being plotted, typically 'Parameter' or 'Error'.
         residuals: bool, optional
             Optional toggle to plot the residual difference of each plot pair in the subplot.
+        cmap: str, optional
+            Colourmap to use for imshow function, viridis as default.
+            Options for colours: https://matplotlib.org/stable/gallery/color/colormap_reference.html
     """
     # Checking formatting of inputs to return errors if incorrect
     if not all(isinstance(v, np.ndarray) for v in (raw_pdata,clean_pdata)):
@@ -215,22 +218,25 @@ def param_plotting(raw_pdata, clean_pdata, name, residuals=False):
     # Iterating the plots over the number of parameters in the array.
     for index in range(raw_pdata.shape[2]):
 
+        # Paramaters for title
+        p_name = ["A","B","C","D","E"]
+
         # Formatting plot
         plt.figure(figsize=(12,4))
-        plt.suptitle(name+' Set {} Colourmap'.format(index+1))
+        plt.suptitle(name+' Set {} Colourmap'.format(p_name[index]))
 
         # Raw value plot
         plt.subplot(1,plot_no,1)
         plt.title('Raw Values')
         raw_pshape = raw_pdata[:,:,index]
-        plt.imshow(raw_pshape)
+        plt.imshow(raw_pshape, cmap=cmap)
         plt.colorbar()
 
         # Clean value plot
         plt.subplot(1,plot_no,2)
         plt.title('Clean Values')
         clean_pshape = clean_pdata[:,:,index]
-        plt.imshow(clean_pshape)
+        plt.imshow(clean_pshape, cmap=cmap)
         plt.colorbar()
 
         # Residuals plot (if needed)
@@ -238,5 +244,5 @@ def param_plotting(raw_pdata, clean_pdata, name, residuals=False):
             plt.subplot(1,plot_no,3)
             plt.title('Residuals')
             residuals_shape = clean_pshape - raw_pshape
-            plt.imshow(residuals_shape)
+            plt.imshow(residuals_shape, cmap=cmap)
             plt.colorbar()
