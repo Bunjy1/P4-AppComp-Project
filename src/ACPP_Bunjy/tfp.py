@@ -40,7 +40,7 @@ def periodic(x, a, b, c, d, e):
         The calculated y values of the periodic function corresponding to x.
     """
     x = np.asarray(x)
-    return(a*np.sin(np.deg2rad(x+b)) + c*np.sin(np.deg2rad(2*(x+d))) + e)
+    return(a*np.sin(np.deg2rad(x+b)) + c*np.sin(np.deg2rad(2*x+d)) + e)
 
 def periodic_fitter(current_data, params_guess, bounds):
     """ Application of scipy's optimise curve-fit to the TFP in a
