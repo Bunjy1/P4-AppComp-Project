@@ -94,7 +94,7 @@ def find_rre(orig, clean):
     print('Relative reconstruction error: {}'.format(rel_error))
     return(rel_error)
 
-def find_evr(cleaned_data, vectors):
+def find_evr(cleaned_data, vectors, algorithm):
     """ Function to find the explained variance ratio of a
         decomposition algorithm. Typically used within the later
         auto_decomp function, but can be applied manually.
@@ -108,6 +108,8 @@ def find_evr(cleaned_data, vectors):
             Cleaned dataset after decomposition and reconstruction in Hyperspy formatting.
         vectors: int
             Number of vectors in cleaned_data reconstruction.
+        algorithm: str
+            Algorithm used for decomposition of the dataset.
 
         Returns
         -------
@@ -120,7 +122,7 @@ def find_evr(cleaned_data, vectors):
         raise ValueError("Raw and clean data arrays must by of type hs.signals.Signal1D.")
 
     # Checking correct algorithm for calculation
-    if algorithm not in ["SVD","PCA"]:
+    if algorithm not in ["SVD","sklearn_pca"]:
         print("EVR Metric is unavailable for", algorithm)
         return None
 
@@ -220,7 +222,7 @@ def auto_decomp(input_data, vectors, algorithm="SVD", output_dimension=None, met
 
         # Running metric functions
         rre = find_rre(orig, clean)
-        evr = find_evr(cleaned_data, vectors)
+        evr = find_evr(cleaned_data, vectors, algorithm=algorithm)
         nsm = find_nsm(orig,clean)
         metrics_list = [rre, evr, nsm]
 
@@ -231,7 +233,7 @@ def auto_decomp(input_data, vectors, algorithm="SVD", output_dimension=None, met
 
         # Scree plot
         # Checking a scree plot compatible algorithm is being used
-        if algorithm not in ["SVD","PCA"]:
+        if algorithm not in ["SVD","sklearn_pca"]:
             print("Scree Plot is unavailable for", algorithm)
         else:
             cleaned_data.plot_explained_variance_ratio()
