@@ -19,7 +19,7 @@ import ACPP_Bunjy.tfp as tfp
 import ACPP_Bunjy.decomp as decomp
 
 """ Function """
-def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics=False, component_plots=False, param_plots=False, residuals=False, iterative_fitting=True, clean_outliers=False, save_data=False, filename='placeholder_name'):
+def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', output_dimension=None, metrics=False, component_plots=False, param_plots=False, residuals=False, iterative_fitting=True, clean_outliers=False, save_data=False, filename='placeholder_name'):
     """ Cumulative function to apply both the primary decomposition and TFP processes
         in a single action, with various toggle to control aspects of the process.
         With a correctly processed dataset using the auto_import function in decomp.py,
@@ -41,6 +41,9 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
         -------------------
         algorithm: str
             Algorithm for use by Hyperspy decomposition, see Hyperspy documentation.
+        output_dimension: int
+            Output dimension for decomposition, required for some decomposition algorithms.
+            See decomp.py for details.
         metrics: bool, optional
             Toggle to return decomposition goodness metrics.
         component_plots: bool, optional
@@ -76,7 +79,7 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', metrics
     
     # Finding vector decomps
     raw_data = dataset.data
-    clean_hsdata = decomp.auto_decomp(dataset, vectors, algorithm=algorithm, metrics=metrics)
+    clean_hsdata = decomp.auto_decomp(dataset, vectors, algorithm=algorithm, output_dimension=output_dimension, metrics=metrics)
     clean_data = clean_hsdata[0].data
     metrics = clean_hsdata[1]
 
