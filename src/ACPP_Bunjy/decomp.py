@@ -151,7 +151,7 @@ def find_nsm(orig, clean):
     print('Noise suppression metric: {}'.format(nsm))
     return(nsm)
     
-def auto_decomp(input_data, vectors, algorithm="SVD", metrics=False, plots=False):
+def auto_decomp(input_data, vectors, algorithm="SVD", output_dimension=None, metrics=False, plots=False):
 
     """ Function to automate and streamline Hyperspy decomposition
         of input data. Data can be reconstructed with a desired number
@@ -167,6 +167,9 @@ def auto_decomp(input_data, vectors, algorithm="SVD", metrics=False, plots=False
             Desired vectors to be used for signal reconstruction, for which all vectors up to the int value will be used.
         algorithm: str, default='SVD'
             The algorithm to be used by Hyperspy for decomposition, see Hyperspy documentation for details.
+        output_dimension: int, default='None'
+            The number of output components desired from decomposition, required for operation of other non-SVD algorithms in
+            Hyperspy. None as default for use with SVD, which will give an output_dimension of 360.
         metrics: bool, optional
             Argument to return metrics for evaluation of algorithm performance, including RRE, EVR, and NSM.
         plots: bool, optional
@@ -192,7 +195,7 @@ def auto_decomp(input_data, vectors, algorithm="SVD", metrics=False, plots=False
         raise ValueError("Algorithm must be a str. See Hyperspy documentation for list of options.")
 
     # Decomposition
-    input_data.decomposition(algorithm=algorithm) # some algorithms need output_dimension specified?
+    input_data.decomposition(algorithm=algorithm, output_dimension=output_dimension)
     cleaned_data = input_data.get_decomposition_model(vectors)
 
     # Setting metrics_list empty if unneeded
