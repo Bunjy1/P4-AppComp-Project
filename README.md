@@ -1,6 +1,6 @@
 # P4 Applied Computing Lab Project - 2758304H
 
-This is a package for P4 Applied Computing Labs, containing all work pertaining to my unsupervised machine learning (UML) data clean-up project. The project aim was to assess the usefulness in applying UML to clean-up of a 4D azimuthal electron diffraction dataset from a crystal lattice, with the majority of the project work using singular value decomposition (SVD) for clean-up and results appearing promising. Included are files containing the functions designed for the project with comprehensive docstring documentation, and example notebooks showing the mathematical basis and operation of each of the key functions. The package has been designed primarily for use on the UofG Juoyterhub server, but should function on other python platforms (eg. conda), with installation details listed below.
+This is a package for P4 Applied Computing Labs, containing all work pertaining to my unsupervised machine learning (UML) data clean-up project. The project aim was to assess the usefulness in applying UML to clean-up of a 4D azimuthal electron diffraction dataset from a crystal lattice, with the majority of the project work using singular value decomposition (SVD) for clean-up and results appearing promising. Included are files containing the functions designed for the project with comprehensive docstring documentation, and example notebooks showing the mathematical basis and operation of each of the key functions. The package has been designed primarily for use on the UofG Jupyterhub server, but should function on other python platforms (eg. conda), with installation details listed below.
 
 ## Contents
 
@@ -22,7 +22,7 @@ This package was designed for use in Python versions 3.9 or higher. The followin
 * tqdm>=4.67.2
 * hyperspy>=2.3.0
 
-The following imports are used throughout the package, but are ot required as stated dependencies as they come installed with Python 3.9:
+The following imports are used throughout the package, but are not required as stated dependencies as they come installed with Python 3.9:
 
 * os
 * time
@@ -49,7 +49,7 @@ The following packages are used in the weeks 1-3 section of the package function
 
 ## Installation (Conda)
 
-As the project was desgined for use in the UofG Jupyter, success is not guaranteed with this method. However, this installation should perform as expected.
+As the project was designed for use in the UofG Jupyter, success is not guaranteed with this method. However, this installation should perform as expected.
 
 Prerequisites:
 - Conda (Anaconda or Miniconda)
