@@ -25,9 +25,19 @@ This package was designed for use in Python versions 3.9 or higher. Dependencies
 
 ## Installation (UofG Jupyter)
 
-For installation on the university Jupyterhub, the following line in a terminal will fully install the package:
+1. For installation on the university Jupyterhub, the following line in a terminal will fully install the package:
 
-    pip install git+"https://github.com/Bunjy1/P4-AppComp-Project"
+        pip install git+"https://github.com/Bunjy1/P4-AppComp-Project"
+
+2. Optionally test successful installation with (look for package name listed):
+
+       pip list
+
+3. The package should now be installed. Functions from the package can be installed as follows:
+
+        import ACPP_Bunjy.tfp as tfp
+        import ACPP_Bunjy.decomp as decomp
+        import ACPP_Bunjy.compare as compare
 
 ## Installation (Conda)
 
@@ -35,40 +45,22 @@ As the project was desgined for use in the UofG Jupyter, success is not guarante
 
 Prerequisites:
 - Conda (Anaconda or Miniconda)
-- Git
 
-1. Clone the repository
+1. If git not already installed in the environment being used, install with:
 
-    git clone https://github.com/Bunjy1/P4-AppComp-Project.git
-    cd P4-AppComp-Project
+           conda install git
 
-2. Create and activate a conda environment
+2. Install the package as above using pip. Conda install will not work for this installation.
 
-    conda create -n appcomp python=3.10
-    conda activate appcomp
+            pip install git+"https://github.com/Bunjy1/P4-AppComp-Project"
 
-3. Install required dependencies
+3. Optionally test successful installation with (look for package name listed):
 
-    conda install pip git
+           pip list
 
-4. Install the package
+4. The package should now be installed. Functions from the package can be installed as follows:
 
-Install the project in editable mode (recommended for development):
+            import ACPP_Bunjy.tfp as tfp
+            import ACPP_Bunjy.decomp as decomp
+            import ACPP_Bunjy.compare as compare
 
-    pip install -e .
-
-5. (Optional) Use with Jupyter Notebook
-
-If using Jupyter, register the environment as a kernel:
-
-    python -m ipykernel install --user --name appcomp --display-name "Python (appcomp)"
-
-Launch Jupyter and select "Python (appcomp)" as the kernel.
-
-6. Verify installation
-
-In Python or a Jupyter notebook:
-
-    import ACPP_Bunjy
-
-If no error is raised, the installation was successful.
