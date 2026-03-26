@@ -58,7 +58,19 @@ Prerequisites:
 
            pip list
 
-4. The package should now be installed. Functions from the package can be installed as follows:
+4. Activate the desired environment for use:
+
+           conda activate "env name here"
+
+5. Install Kernel support if not already installed:
+
+           conda install ipykernel
+
+6. Launch Jupyter Lab
+
+           Jupyter lab
+
+7. The package should now be installed. Select the environment from step 4 as the kernel for use in the notebook. Functions from the package can be installed as follows:
 
             import ACPP_Bunjy.tfp as tfp
             import ACPP_Bunjy.decomp as decomp
