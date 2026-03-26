@@ -1,6 +1,6 @@
 # P4 Applied Computing Lab Project - 2758304H
 
-This is a package for P4 Applied Computing Labs, containing all work pertaining to my unsupervised machine learning (UML) data clean-up project. The project aim was to assess the usefulness in applying UML to clean-up of a 4D azimuthal electron diffraction dataset from a crystal lattice, with the majority of the project work using singular value decomposition (SVD) for clean-up and results appearing promising. Included are files containing the functions designed for the project with comprehensive docstring documentation, and example notebooks showing the mathematical basis and operation of each of the key functions. The package has been designed primarily for use on the UofG Juoyterhub server, but should function on other python platforms (eg. conda), with installation details listed below.
+This is a package for P4 Applied Computing Labs, containing all work pertaining to my unsupervised machine learning (UML) data clean-up project. The project aim was to assess the usefulness in applying UML to clean-up of a 4D azimuthal electron diffraction dataset from a crystal lattice, with the majority of the project work using singular value decomposition (SVD) for clean-up and results appearing promising. Included are files containing the functions designed for the project with comprehensive docstring documentation, and example notebooks showing the mathematical basis and operation of each of the key functions. The package has been designed primarily for use on the UofG Jupyterhub server, but should function on other python platforms (eg. conda), with installation details listed below.
 
 ## Contents
 
@@ -14,14 +14,22 @@ Within this repository are all the standard formatting options to allow installa
 
 ## Dependencies
 
-This package was designed for use in Python versions 3.9 or higher. Dependencies for the package are as follows (previous versions may operate but the package was created with these packages used, proceed with caution):
+This package was designed for use in Python versions 3.9 or higher. The following dependencies are (where applicable) listed in the .toml file for automatic installation with install of the package. Dependencies for the package are as follows (previous versions may operate but the package was created with these packages used, proceed with caution):
 
 * numpy>=2.0.2
 * matplotlib>=3.9.2
 * scipy>=1.13.1
-* scikit-learn>=1.6.1
 * tqdm>=4.67.2
 * hyperspy>=2.3.0
+
+The following imports are used throughout the package, but are not required as stated dependencies as they come installed with Python 3.9:
+
+* os
+* time
+
+The following packages are used in the weeks 1-3 section of the package function, but are not required for the main project work. They are listed in the dependencies but are an optional install for the main project operation:
+
+* scikit-learn>=1.6.1
 
 ## Installation (UofG Jupyter)
 
@@ -41,7 +49,7 @@ This package was designed for use in Python versions 3.9 or higher. Dependencies
 
 ## Installation (Conda)
 
-As the project was desgined for use in the UofG Jupyter, success is not guaranteed with this method. However, this installation should perform as expected.
+As the project was designed for use in the UofG Jupyter, success is not guaranteed with this method. However, this installation should perform as expected.
 
 Prerequisites:
 - Conda (Anaconda or Miniconda)
