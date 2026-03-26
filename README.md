@@ -27,17 +27,17 @@ This package was designed for use in Python versions 3.9 or higher. Dependencies
 
 1. For installation on the university Jupyterhub, the following line in a terminal will fully install the package:
 
-    pip install git+"https://github.com/Bunjy1/P4-AppComp-Project"
+        pip install git+"https://github.com/Bunjy1/P4-AppComp-Project"
 
 2. Optionally test successful installation with (look for package name listed):
 
-   pip list
+       pip list
 
 3. The package should now be installed. Functions from the package can be installed as follows:
 
-    import ACPP_Bunjy.tfp as tfp
-    import ACPP_Bunjy.decomp as decomp
-    import ACPP_Bunjy.compare as compare
+        import ACPP_Bunjy.tfp as tfp
+        import ACPP_Bunjy.decomp as decomp
+        import ACPP_Bunjy.compare as compare
 
 ## Installation (Conda)
 
