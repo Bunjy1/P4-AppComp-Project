@@ -110,6 +110,7 @@ def find_evr(cleaned_data, vectors, algorithm):
             Number of vectors in cleaned_data reconstruction.
         algorithm: str
             Algorithm used for decomposition of the dataset.
+            Full list of algorithms can be found at: https://hyperspy.org/hyperspy-doc/current/user_guide/mva/decomposition.html
 
         Returns
         -------
@@ -179,7 +180,8 @@ def auto_decomp(input_data, vectors, algorithm="SVD", output_dimension=None, met
         vectors: int
             Desired vectors to be used for signal reconstruction, for which all vectors up to the int value will be used.
         algorithm: str, default='SVD'
-            The algorithm to be used by Hyperspy for decomposition, see Hyperspy documentation for details.
+            The algorithm to be used by Hyperspy for decomposition.
+            Full list of algorithms available at: https://hyperspy.org/hyperspy-doc/current/user_guide/mva/decomposition.html
         output_dimension: int, default='None'
             The number of output components desired from decomposition, required for operation of other non-SVD algorithms in
             Hyperspy. None as default for use with SVD, which will give an output_dimension of 360.
@@ -205,7 +207,7 @@ def auto_decomp(input_data, vectors, algorithm="SVD", output_dimension=None, met
 
     # Hyperspy algorithm will return separate error if an incorrect algorithm name is used so unneeded here.
     if not isinstance(algorithm, str):
-        raise ValueError("Algorithm must be a str. See Hyperspy documentation for list of options.")
+        raise ValueError("Algorithm must be a str. See Hyperspy documentation for list of options: https://hyperspy.org/hyperspy-doc/current/user_guide/mva/decomposition.html.")
 
     # Decomposition
     input_data.decomposition(algorithm=algorithm, output_dimension=output_dimension)
