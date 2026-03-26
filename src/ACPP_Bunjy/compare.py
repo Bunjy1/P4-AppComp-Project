@@ -5,14 +5,17 @@
     Examples of usage can be found in the related example notebook.
 """
 
-""" Importing Required Dependencies."""
+""" Importing Inbuilt Packages
+    These are not dependencies for download, but are still required for function operation."""
 import os
+import time
+
+""" Importing Required Dependencies."""
 import numpy as np
 import matplotlib.pyplot as plt
 import hyperspy.api as hs
 from scipy import optimize
 from tqdm import tqdm
-import time
 
 """ Extracting Required functions from other .py files. """
 import ACPP_Bunjy.tfp as tfp
@@ -75,7 +78,7 @@ def fit_compare(dataset, vectors, params_guess, bounds, algorithm='SVD', output_
     # Input error checks
     if not isinstance(dataset, hs.signals.Signal1D):
         raise ValueError("Input data must by of type hs.signals.Signal1D.")
-    # All other input types will be flagged by respective function errors.
+    # All other input type errors will be flagged by respective function errors.
 
     # Tracking function runtime for comparison
     t_start = time.time()
