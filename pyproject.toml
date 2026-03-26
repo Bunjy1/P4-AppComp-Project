@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ACPP_Bunjy"
-version = "0.7.3"
+version = "1.0.0"
 authors = [
   { name="Ben Hansen", email="2758304h@student.gla.ac.uk" },
 ]
