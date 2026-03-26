@@ -19,26 +19,26 @@ def periodic(x, a, b, c, d, e):
         sin(x) + sin(2x), with parameters that can be manually adjusted
         or determined through curve fitting.
 
-    Parameters
-    ----------
-    x: array-like
-        Input values of x to the function (in degrees).
-    a: float
-        Amplitude of the first sinusoidal term.
-    b: float
-        Phase shift applied to the first sinusoidal term.
-    c: float
-        Amplitude of the second sinusoidal term.
-    d: float
-        Phase shift applied to the second sinusoidal term.
-    e: float
-        Constant offset applied to the function.
-
-    Returns
-    -------
-    y : numpy.ndarray
-        The calculated y values of the periodic function corresponding to x.
-    """
+        Parameters
+        ----------
+        x: array-like
+            Input values of x to the function (in degrees).
+        a: float
+            Amplitude of the sin(x) term.
+        b: float
+            Phase shift applied to the sin(x) term (in degrees).
+        c: float
+            Amplitude of the sin(2x) term.
+        d: float
+            Phase shift applied to the sin(2x) term (in degrees).
+        e: float
+            Constant offset applied to the function.
+    
+        Returns
+        -------
+        y : numpy.ndarray
+            The calculated y values of the periodic function corresponding to x.
+        """
     x = np.asarray(x)
     return(a*np.sin(np.deg2rad(x+b)) + c*np.sin(np.deg2rad(2*x+d)) + e)
 
@@ -46,24 +46,25 @@ def periodic_fitter(current_data, params_guess, bounds):
     """ Application of scipy's optimise curve-fit to the TFP in a
         generic singular case.
 
-    Parameters
-    ----------
-    current_data: array-like
-        Intensity of y-values for the data being fitted to.
-    params_guess: list or array
-        Array of initial estimate parameters for function values a-e.
-    bounds: list or array
-        Paired arrays defining the lower and upper bounds of possible parameters respectively.
-
-    Returns
-    -------
-    params: numpy.ndarray
-        Found parameters from curve fitting.
-    errors: numpy.ndarray
-        Associated parameters on each parameter.
-    r_squared: float
-        R² value associated with the fitted curve.
-    """
+        Parameters
+        ----------
+        current_data: array-like
+            Intensity of y-values for the data being fitted to.
+        params_guess: list or array
+            Array of initial estimate parameters for function values a-e.
+        bounds: list or array
+            Paired arrays defining the lower and upper bounds of possible parameters respectively.
+            Should be formatted [[lower bounds],[upper bounds]].
+    
+        Returns
+        -------
+        params: numpy.ndarray
+            Found parameters from curve fitting.
+        errors: numpy.ndarray
+            Associated errors calculated for each parameter.
+        r_squared: float
+            R² value associated with the fitted curve.
+        """
 
     # Converting input data to numpy array (if not already)
     current_data = np.asarray(current_data)
@@ -111,26 +112,26 @@ def perfit_iterate(inp_array, params_guess, bounds, iterative_fitting=True):
         Optionally, iterative parameter guessing can be implemented to 
         improve function efficiency.
 
-    Parameters
-    ----------
-    inp_array: array-like
-        3D data array for curve fitting along the third array dimension.
-    params_guess: list or array-like
-        Initial parameter guesses for the periodic function [a, b, c, d, e].
-    bounds: tuple of array-like
-        Paired arrays defining the lower and upper bounds of possible parameters.
-    iterative_fitting: bool, optional
-        Toggle for iterative parameter guessing using the previous fit parameters.
-
-    Returns
-    -------
-    params_array: numpy.ndarray
-        Array of fitted parameters with shape (nx, ny, 5).
-    errors_array: numpy.ndarray
-        Array of parameter uncertainties with shape (nx, ny, 5).
-    r2_array: numpy.ndarray
-        Array of R² values with shape (nx, ny).
-    """
+        Parameters
+        ----------
+        inp_array: array-like
+            3D data array for curve fitting along the third array dimension.
+        params_guess: list or array-like
+            Initial parameter guesses for the periodic function [a, b, c, d, e].
+        bounds: tuple of array-like
+            Paired arrays defining the lower and upper bounds of possible parameters.
+        iterative_fitting: bool, optional
+            Toggle for iterative parameter guessing using the previous fit parameters.
+    
+        Returns
+        -------
+        params_array: numpy.ndarray
+            Array of fitted parameters with shape (nx, ny, 5).
+        errors_array: numpy.ndarray
+            Array of parameter uncertainties with shape (nx, ny, 5).
+        r2_array: numpy.ndarray
+            Array of R² values with shape (nx, ny).
+        """
 
     # Convert input to numpy array (if not already)
     inp_array = np.asarray(inp_array)
@@ -198,7 +199,7 @@ def param_plotting(raw_pdata, clean_pdata, name, residuals=False, cmap="viridis"
         cmap: str, optional
             Colourmap to use for imshow function, viridis as default.
             Options for colours: https://matplotlib.org/stable/gallery/color/colormap_reference.html
-    """
+        """
     # Checking formatting of inputs to return errors if incorrect
     if not all(isinstance(v, np.ndarray) for v in (raw_pdata,clean_pdata)):
         raise ValueError("Raw and clean data arrays must by of type numpy.ndarray.")
