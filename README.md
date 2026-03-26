@@ -48,19 +48,19 @@ Prerequisites:
 
 1. If git not already installed in the environment being used, install with:
 
-   conda install git
+           conda install git
 
 2. Install the package as above using pip. Conda install will not work for this installation.
 
-    pip install git+"https://github.com/Bunjy1/P4-AppComp-Project"
+            pip install git+"https://github.com/Bunjy1/P4-AppComp-Project"
 
 3. Optionally test successful installation with (look for package name listed):
 
-   pip list
+           pip list
 
 4. The package should now be installed. Functions from the package can be installed as follows:
 
-    import ACPP_Bunjy.tfp as tfp
-    import ACPP_Bunjy.decomp as decomp
-    import ACPP_Bunjy.compare as compare
+            import ACPP_Bunjy.tfp as tfp
+            import ACPP_Bunjy.decomp as decomp
+            import ACPP_Bunjy.compare as compare
 
