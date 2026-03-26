@@ -14,14 +14,22 @@ Within this repository are all the standard formatting options to allow installa
 
 ## Dependencies
 
-This package was designed for use in Python versions 3.9 or higher. Dependencies for the package are as follows (previous versions may operate but the package was created with these packages used, proceed with caution):
+This package was designed for use in Python versions 3.9 or higher. The following dependencies are (where applicable) listed in the .toml file for automatic installation with install of the package. Dependencies for the package are as follows (previous versions may operate but the package was created with these packages used, proceed with caution):
 
 * numpy>=2.0.2
 * matplotlib>=3.9.2
 * scipy>=1.13.1
-* scikit-learn>=1.6.1
 * tqdm>=4.67.2
 * hyperspy>=2.3.0
+
+The following imports are used throughout the package, but are ot required as stated dependencies as they come installed with Python 3.9:
+
+* os
+* time
+
+The following packages are used in the weeks 1-3 section of the package function, but are not required for the main project work. They are listed in the dependencies but are an optional install for the main project operation:
+
+* scikit-learn>=1.6.1
 
 ## Installation (UofG Jupyter)
 
